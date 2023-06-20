@@ -23,7 +23,7 @@ def lambda_handler(event, context):
         },
         UpdateExpression= 'SET visitors = :start + :incr',
         ExpressionAttributeValues={
-            ':start': current_value,
+            ':start': current_value or 0,
             ':incr': 1
         },
         ReturnValues='UPDATED_NEW'
@@ -32,5 +32,6 @@ def lambda_handler(event, context):
     print(f'Visitor counter updated. Current count: {counter_value}')
     return {
         'statusCode': 200,
-        'body': f'Visitor counter updated. Current count: {counter_value}'
+        'body': f'Visitor counter updated. Current count: {counter_value}',
+        'count': f'{counter_value}'
     }
