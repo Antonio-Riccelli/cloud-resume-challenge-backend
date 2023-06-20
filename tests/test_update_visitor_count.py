@@ -1,6 +1,7 @@
 import unittest
 from moto import mock_dynamodb2
 import boto3
+import os
 target = __import__('../cfn/lambda_src/cloud-resume-update-visitor-count/lambda_function.py')
 lambda_handler = target.lambda_handler
 
@@ -28,7 +29,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         table.wait_until_exists()
 
         # Mock environmental variables
-        os.environ['DYNAMODB_TABLE_NAME'] = table_name
+        os.environ['DYNAMODB_TABLE_NAME'] = table['TableDescription']['TableName']
 
         # Invoke lambda function
         event = {}
@@ -41,7 +42,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         # Assertions
         self.assertEqual(result['statusCode'], 200)
         self.assertIn('body', result)
-        self.assertEqual(result['body'], f'Visitor counter updated. Current count: {counter_value}')
+        self.assertEqual(result['body'], f'Visitor counter updated. Current count: {result["count"]}')
         self.assertEqual(result['count'], 1)
 
 if __name__ == '__main__':
