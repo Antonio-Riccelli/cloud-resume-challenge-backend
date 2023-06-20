@@ -2,8 +2,7 @@ import unittest
 from moto import mock_dynamodb
 import boto3
 import os
-target = __import__('../cfn/lambda_src/cloud-resume-update-visitor-count/lambda_function.py')
-lambda_handler = target.lambda_handler
+from cfn.lambda_src.cloud_resume_update_visitor_count.lambda_function import lambda_handler
 
 @mock_dynamodb
 class TestUpdateVisitorCount(unittest.TestCase):
