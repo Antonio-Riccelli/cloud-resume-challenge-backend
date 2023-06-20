@@ -1,3 +1,0 @@
-moto[all]
-ruff
-pytest
