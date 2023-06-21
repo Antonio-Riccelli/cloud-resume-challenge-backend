@@ -26,7 +26,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
                 'WriteCapacityUnits': 5
             }
         )
-        table.wait_until_exists()
+        self.table.wait_until_exists()
 
         # Set environmental variables
         os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
