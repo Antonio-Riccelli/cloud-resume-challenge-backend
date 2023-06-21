@@ -40,7 +40,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         table_mock.put_item(Item={'project': 'cloud-resume-challenge', 'visitors': 0})
 
         # Patch the boto3.resource and table.get_item calls in the lambda function
-        with patch('boto3.resource') as resource_mock, patch.object(table_mock, 'get_item') as get_item_mock:
+        with patch('boto3.resource') as resource_mock, patch.object(table_mock, 'get_item') as get_item_mock, patch.object(table_mock, 'update_item') as update_item_mock:
             # Set return values of mocks
             resource_mock.return_value = self.dynamodb
             get_item_mock.return_value = {
@@ -54,12 +54,12 @@ class TestUpdateVisitorCount(unittest.TestCase):
             response = lambda_handler(event, None)
 
         # Assert that the expected DynamoDB methods were called
-        table_mock.get_item.assert_called_with(
+        get_item_mock.assert_called_with(
             TableName=self.table_name,
             Key={'project': 'cloud-resume-challenge'},
             ProjectionExpression='visitors'
         )
-        table_mock.update_item.assert_called_with(
+        update_item_mock.assert_called_with(
             TableName=self.table_name,
             Key={'project': 'cloud-resume-challenge'},
             UpdateExpression='SET visitors = :start + :incr',
