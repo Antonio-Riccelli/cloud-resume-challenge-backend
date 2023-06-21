@@ -12,7 +12,7 @@ def lambda_handler(event, context):
         },
         ProjectionExpression='visitors'
         )
-
+    print("Current value response:", current_value_response)
     current_value = current_value_response['Item']['visitors']
     print("Visitors counter, current value:", current_value)
 
