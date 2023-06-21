@@ -28,6 +28,7 @@ def lambda_handler(event, context):
         },
         ReturnValues='UPDATED_NEW'
         )
+    print("Response", response)
     counter_value = response['Attributes']['visitors']
     print(f'Visitor counter updated. Current count: {counter_value}')
     return {
