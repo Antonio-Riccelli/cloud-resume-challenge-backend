@@ -2,7 +2,7 @@ import boto3
 import os
 
 def lambda_handler(event, context):
-    dynamodb = boto3.resource('dynamodb')
+    dynamodb = boto3.resource('dynamodb', os.environ['AWS_DEFAULT_REGION'])
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE_NAME'])
 
     current_value_response = table.get_item(
