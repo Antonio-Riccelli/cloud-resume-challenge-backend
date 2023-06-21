@@ -28,7 +28,8 @@ class TestUpdateVisitorCount(unittest.TestCase):
         table.wait_until_exists()
 
         # Mock environmental variables
-        os.environ['DYNAMODB_TABLE_NAME'] = table['TableDescription']['TableName']
+        print("table", table)
+        os.environ['DYNAMODB_TABLE_NAME'] = "cloud-resume-visitor-counter"
 
         # Invoke lambda function
         event = {}
