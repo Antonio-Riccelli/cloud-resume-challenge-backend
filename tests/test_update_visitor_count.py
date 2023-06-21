@@ -32,6 +32,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         print("table", table)
         print("Mocking env variables...")
         os.environ['DYNAMODB_TABLE_NAME'] = "cloud-resume-visitor-counter"
+        print("Default region", os.environ['AWS_DEFAULT_REGION'])
 
         # Invoke lambda function
         print("Invoking lambda function...")
