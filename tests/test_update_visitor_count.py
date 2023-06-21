@@ -12,6 +12,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         """
         dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
+        print("Creating table...")
         table = dynamodb.create_table(
             TableName='cloud-resume-visitor-counter',
             KeySchema=[
@@ -29,12 +30,15 @@ class TestUpdateVisitorCount(unittest.TestCase):
 
         # Mock environmental variables
         print("table", table)
+        print("Mocking env variables...")
         os.environ['DYNAMODB_TABLE_NAME'] = "cloud-resume-visitor-counter"
 
         # Invoke lambda function
+        print("Invoking lambda function...")
         event = {}
         result = lambda_handler(event, None)
 
+        print("retrieving item from table...")
         # Retrieve item from the table
         response = table.get_item(Key={'project': 'cloud-resume-challenge'})
         item = response.get('Item')
