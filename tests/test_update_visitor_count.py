@@ -43,7 +43,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         print("retrieving item from table...")
         # Retrieve item from the table
         response = table.get_item(Key={'project': 'cloud-resume-challenge'})
-        item = response.get('Item')
+        print("Response", response)
 
         # Assertions
         self.assertEqual(result['statusCode'], 200)
