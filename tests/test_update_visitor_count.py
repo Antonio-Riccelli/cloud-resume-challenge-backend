@@ -2,7 +2,7 @@ import unittest
 from moto import mock_dynamodb
 import boto3
 import os
-from cfn.lambda_src.cloud_resume_update_visitor_count.lambda_function import lambda_handler
+from cfn.code_src.cloud_resume_update_visitor_count.function import lambda_handler
 
 @mock_dynamodb
 class TestUpdateVisitorCount(unittest.TestCase):
