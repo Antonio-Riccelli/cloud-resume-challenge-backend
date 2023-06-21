@@ -1,10 +1,10 @@
 import unittest
-from moto import mock_dynamodb
+import moto
 import boto3
 import os
 from cfn.code_src.cloud_resume_update_visitor_count.function import lambda_handler
 
-@mock_dynamodb
+@moto.mock_dynamodb2
 class TestUpdateVisitorCount(unittest.TestCase):
     def test_update_visitor_count_successfully(self):
         """
