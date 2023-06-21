@@ -34,7 +34,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
 
     def test_lambda_handler(self):        
         # Mock DynamoDB Table resource
-        table_mock = dynamodb.Table(self.table_name)
+        table_mock = self.dynamodb.Table(self.table_name)
 
         # Set up initial item in table
         table_mock.put_item(Item={'project': 'cloud-resume-challenge', 'visitors': 0})
