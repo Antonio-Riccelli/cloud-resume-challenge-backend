@@ -64,7 +64,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
                     TableName='cloud-resume-visitor-counter',
                     Key={'project': 'cloud-resume-challenge'},
                     UpdateExpression='SET visitors = :start + :incr',
-                    ExpressionAttributeValues={':start': 5, ':incr': 1},
+                    ExpressionAttributeValues={':start': 0, ':incr': 1},
                     ReturnValues='UPDATED_NEW'
                 )
 
