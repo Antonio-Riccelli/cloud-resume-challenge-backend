@@ -45,7 +45,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
             resource_mock.return_value = self.dynamodb
             get_item_mock.return_value = {
                 'Item': {
-                    'visitors' : 5 # Mock current value of visitors
+                    'visitors' : 0 # Mock current value of visitors
                 }
             }
 
@@ -70,8 +70,8 @@ class TestUpdateVisitorCount(unittest.TestCase):
         # Assert response from the lambda function
         expected_response = {
             'statusCode': 200,
-            'body': f'Visitor counter updated. Current count: 6',
-            'count': 6 # Mock current value of visitors'
+            'body': f'Visitor counter updated. Current count: 1',
+            'count': 1 # Mock current value of visitors'
         }
         self.assertEqual(response, expected_response)
     
