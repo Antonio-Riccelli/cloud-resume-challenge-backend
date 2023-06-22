@@ -68,12 +68,12 @@ class TestUpdateVisitorCount(unittest.TestCase):
             )
 
         # Assert response from the lambda function
-        expected_response = {
-        'statusCode': 200,
-        'body': 'Visitor counter updated. Current count: 1',
-        'count': '1'
-        }
-        self.assertEqual(response, expected_response)
+            expected_response = {
+            'statusCode': 200,
+            'body': 'Visitor counter updated. Current count: 1',
+            'count': '1'
+            }
+            self.assertEqual(response, expected_response)
     
     def tearDown(self):
         # Stop mock dynamodb
