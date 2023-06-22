@@ -49,6 +49,11 @@ class TestUpdateVisitorCount(unittest.TestCase):
                         'visitors': 0  # Mock current value of visitors
                     }
                 }
+                update_item_mock.return_value = {
+                    'Attributes': {
+                        'visitors': 1  # Mock updated value of visitors
+                    }
+                }
 
                 # Call lambda handler with sample event
                 event = {}
