@@ -24,7 +24,7 @@ jobs:
       - name: Lint with Ruff
         uses: chartboost/ruff-action@v1      
         with: 
-          args: --fix --format-github --target-version=py37 --exit-zero
+          args: --fix --format=github --target-version=py37 --exit-zero
           
   test:
     runs-on: ubuntu-latest
