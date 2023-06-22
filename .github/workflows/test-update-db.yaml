@@ -23,12 +23,7 @@ jobs:
       - name: Lint with ruff
         run: |
           # default set of ruff rules with GitHub Annotations
-          ruff --format=github --target-version=py37 .
-          echo "::set-output name=lint-errors::$(ruff --format=json .)"
-          
-      - name: Fix with Ruff
-        if: steps.lint.outputs.lint-errors != '[]'
-        run: ruff fix
+          ruff --fix --format=github --target-version=py37 .
 
       - name: Test
         run: |
