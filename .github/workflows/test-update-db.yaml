@@ -4,9 +4,7 @@ on: [push]
 
 jobs:
   setup:
-  
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -22,14 +20,14 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Format with Black
       - uses: actions/checkout@v3
+      - name: Format with Black
       - uses: psf/black@stable
         with:
           options: "--check --verbose"
           
-      - name: Lint with Ruff
       - uses: chartboost/ruff-action@v1
+      - name: Lint with Ruff      
         with: 
           args: --fix --format-github --target-version=py37 --exit-zero
           
