@@ -56,10 +56,12 @@ class TestUpdateVisitorCount(unittest.TestCase):
 
                 # Assert that the expected DynamoDB methods were called
                 get_item_mock.assert_called_with(
+                    TableName='cloud-resume-visitor-counter',
                     Key={'project': 'cloud-resume-challenge'},
                     ProjectionExpression='visitors'
                 )
                 update_item_mock.assert_called_with(
+                    TableName='cloud-resume-visitor-counter',
                     Key={'project': 'cloud-resume-challenge'},
                     UpdateExpression='SET visitors = :start + :incr',
                     ExpressionAttributeValues={':start': 5, ':incr': 1},
