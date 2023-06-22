@@ -69,9 +69,9 @@ class TestUpdateVisitorCount(unittest.TestCase):
 
         # Assert response from the lambda function
         expected_response = {
-            'statusCode': 200,
-            'body': f'Visitor counter updated. Current count: 1',
-            'count': 1 # Mock current value of visitors'
+        'statusCode': 200,
+        'body': 'Visitor counter updated. Current count: 1',
+        'count': 1'
         }
         self.assertEqual(response, expected_response)
     
