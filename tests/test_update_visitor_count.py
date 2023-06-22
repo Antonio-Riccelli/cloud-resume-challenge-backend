@@ -71,7 +71,7 @@ class TestUpdateVisitorCount(unittest.TestCase):
         expected_response = {
         'statusCode': 200,
         'body': 'Visitor counter updated. Current count: 1',
-        'count': 1'
+        'count': '1'
         }
         self.assertEqual(response, expected_response)
     
